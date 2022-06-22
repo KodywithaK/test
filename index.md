@@ -39,6 +39,4 @@ Footnote[^1]
 <rt>Sky World</rt>
 </ruby>
 
-***
-
 [^1]: Footnote
