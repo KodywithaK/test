@@ -38,4 +38,5 @@ Footnote[^1]
 <ruby>天<rt>てん</rt>空<rt>くう</rt>の<rt></rt>世界<rt>せかい</rt></ruby>
 <rt>Sky World</rt>
 </ruby>
+---
 [^1]: Footnote
