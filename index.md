@@ -40,10 +40,10 @@ Footnote[^1]
 <!--Comment-->
 <ruby>
   <ruby>
-    天<rt>てん</rt>
-    空<rt>くう</rt>
-     <span style="color:blue;">の</span><rt></rt>
-    世界<rt>せかい</rt>
+    <span style="color:green;">天</span><rt>てん</rt>
+    <span style="color:green;">空</span><rt>くう</rt>
+    <span style="color:blue;">の</span><rt></rt>
+    <span style="color:green;">世界</span><rt>せかい</rt>
   </ruby>
     <rt>Sky World</rt>
 </ruby>
