@@ -29,7 +29,7 @@ Regular Text
 2. B
 3. C
    - nested item
-- [] Unchecked
+- [ ] Unchecked
 
 - [x] Checked
 
