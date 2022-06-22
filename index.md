@@ -3,9 +3,13 @@ Regular Text
 > Quoted Text
 ##			Test 2
 *Italic Text*
+
 **Bold Text**
+
 <sup>Superscript Text</sup>
+
 ~~Strikethrough Text~~
+
 <sub>subscript text</sub>
 ###			Test 3
 [External Link]()
