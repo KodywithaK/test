@@ -7,14 +7,13 @@ Regular Text
 
 **Bold Text**
 
-<sup>Superscript Text</sup>
+<sup>Superscript Text</sup>~~Strikethrough Text~~<sub>subscript text</sub>
 
-~~Strikethrough Text~~
-
-<sub>subscript text</sub>
 ###			Test 3
 [External Link]()
+
 [Internal Link]()
+
 ![Image]()
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
