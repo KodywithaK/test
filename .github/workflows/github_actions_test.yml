@@ -39,5 +39,5 @@ jobs:
           name: assets_${{ env.time }}
           path: |
             downloads
-            FINAL
+            test
           retention-days: 3
