@@ -14,11 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: test
+          # path: test
           repository: KodywithaK/dqx-offline-localization
           ref: testing
           sparse-checkout: |
             FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA21Client.win32.json
           sparse-checkout-cone-mode: false
 
       - name: Add Artifacts To Publish To Temp Folder
