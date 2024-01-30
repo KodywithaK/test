@@ -8,11 +8,22 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1 - temp download folder
+      - name: Temp Download Folder
         run: mkdir downloads
 
-      - name: Step 2 - add artifacts to publish to temp folder
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: test
+          repository: KodywithaK/dqx-offline-localization
+          ref: testing
+          sparse-checkout: |
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+          sparse-checkout-cone-mode: false
+
+      - name: Add Artifacts To Publish To Temp Folder
         run: |
+          printf '%s\n' * > downloads/list.txt
           cd downloads
           echo '1' > 1.txt
           echo '2' > 2.txt
@@ -23,8 +34,10 @@ jobs:
           echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
 
       - name: Step 3 - Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@main
         with:
           name: assets_${{ env.time }}
-          path: downloads
+          path: |
+            downloads
+            FINAL
           retention-days: 3
