@@ -25,6 +25,6 @@ jobs:
       - name: Step 3 - Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with:
-          name: assets_$time
+          name: assets_${{ env.time }}
           path: downloads
           retention-days: 3
