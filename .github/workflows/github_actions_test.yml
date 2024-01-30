@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # path: test
+          path: test
           repository: KodywithaK/dqx-offline-localization
           ref: testing
           sparse-checkout: |
