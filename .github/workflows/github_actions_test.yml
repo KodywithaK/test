@@ -42,7 +42,7 @@ jobs:
           # python ./pack_etp_GitHubActions.py -a
           # deactivate
           # cd ../../
-        run: python -c "import sys; print(sys.version)"
+        run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
       - name: Add downloads & list.txt
         run: |
