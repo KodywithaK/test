@@ -72,7 +72,7 @@ jobs:
         # run: |
         #   echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
         run: |
-          echo "time=Get-Date -Format 'yyyy.MM.dd'" >> $GITHUB_ENV
+          echo "time=$(Get-Date -Format 'yyyy.MM.dd')" >> $GITHUB_ENV
 
       - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@main
