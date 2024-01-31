@@ -70,11 +70,8 @@ jobs:
           echo '1' > 1.txt
 
       - name: Get Current Time
-        # run: |
-        #   echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
         run: |
-          powershell
-          echo "time=$(Get-Date -Format 'yyyy.MM.dd')" >> $GITHUB_ENV
+          echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
 
       - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@main
