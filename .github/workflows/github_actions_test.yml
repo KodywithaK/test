@@ -28,6 +28,22 @@ jobs:
           # sparse-checkout-cone-mode: false
           # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Run Python
+        run: |
+          cd .\dqx_dat_dump
+          python -m venv venv
+          .\venv\Scripts\activate
+          pip install -r requirements.txt
+          cd .\tools\packing\
+          python .\pack_etp_GitHubActions.py -a
+          deactivate
+          cd ..\..\
+
       - name: Add downloads & list.txt
         run: |
           ls -R
@@ -48,4 +64,5 @@ jobs:
           name: assets_${{ env.time }}
           path: |
             downloads
+            .\dqx_dat_dump\tools\packing\new_etp
           retention-days: 3
