@@ -64,6 +64,7 @@ jobs:
         #   echo '2' > 2.txt
         #   cd ..
         run: |
+          if exist downloads rd /s /q downloads
           mkdir downloads
           cd downloads
           echo '1' > 1.txt
@@ -71,8 +72,8 @@ jobs:
       - name: Get Current Time
         # run: |
         #   echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
-        shell: pwsh
         run: |
+          powershell
           echo "time=$(Get-Date -Format 'yyyy.MM.dd')" >> $GITHUB_ENV
 
       - name: Upload Artifact GitHub Action
