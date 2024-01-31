@@ -36,7 +36,7 @@ jobs:
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
-          ./venv/Scripts/activate
+          ls
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
