@@ -45,7 +45,7 @@ jobs:
         run: |
           cd ./dqx_dat_dump/
           python -m venv venv
-          ./venv/Scripts/activate
+          ./venv/bin/activate
           pip install -r requirements.txt
           cd ./tools/packing/
           python ./pack_etp_GitHubActions.py -a
