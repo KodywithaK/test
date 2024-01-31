@@ -15,7 +15,8 @@ jobs:
         with:
           path: ./dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
-          ref: main
+          # ref: main
+          ref: test
 
       # - name: Checkout dqx-offline-localization
       #   uses: actions/checkout@v4
@@ -33,12 +34,17 @@ jobs:
         with:
           # python-version: '3.x'
           python-version: '3.11'
-      - name: Run Python
+      - name: Run Python Before
+        run: |
+          cd ./dqx_dat_dump
+          find $PWD
+          python -m venv venv
+      - name: Run Python After
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
           find $PWD
-          ./venv/Scripts/activate
+          
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
