@@ -10,14 +10,11 @@ jobs:
     steps:
       - name: Checkout dqx_dat_dump
         uses: actions/checkout@v4
-        with:
+      - with:
           path: dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           ref: main
-
-      - name: Checkout dqx-offline-localization
-        uses: actions/checkout@v4
-        with:
+      - with:
           # path: test
           repository: KodywithaK/dqx-offline-localization
           ref: testing
@@ -25,6 +22,9 @@ jobs:
             FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
           sparse-checkout-cone-mode: false
           # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+
+      # - name: Checkout dqx-offline-localization
+      #   uses: actions/checkout@v4
 
       - name: Add downloads & list.txt
         run: |
