@@ -11,24 +11,29 @@ jobs:
       - name: Temp Download Folder
         run: mkdir downloads
 
-      - name: Checkout
+      - name: Checkout dqx-dat-dump
         uses: actions/checkout@v4
         with:
-          path: test
+          repository: KodywithaK/dqx-dat-dump
+          
+      - name: Checkout dqx-offline-locatization
+        uses: actions/checkout@v4
+        with:
+          # path: test
           repository: KodywithaK/dqx-offline-localization
           ref: testing
           sparse-checkout: |
-            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
-            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA21Client.win32.json
-          sparse-checkout-cone-mode: false
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/*.win32.json
+          # sparse-checkout-cone-mode: false
+            # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
       - name: Add Artifacts To Publish To Temp Folder
         run: |
           printf '%s\n' * > downloads/list.txt
-          cd downloads
-          echo '1' > 1.txt
-          echo '2' > 2.txt
-          cd ..
+        #   cd downloads
+        #   echo '1' > 1.txt
+        #   echo '2' > 2.txt
+        #   cd ..
 
       - name: Get Current Time
         run: |
@@ -38,7 +43,9 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: assets_${{ env.time }}
+          # path: |
+          #   downloads
+          #   # test
           path: |
             downloads
-            test
           retention-days: 3
