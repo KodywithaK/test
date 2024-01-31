@@ -8,12 +8,13 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
           path: dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           ref: main
-      - uses: actions/checkout@v4
+      - run: ls
+      - uses: actions/checkout@v2
         with:
           # path: test
           repository: KodywithaK/dqx-offline-localization
