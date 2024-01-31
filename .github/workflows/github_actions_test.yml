@@ -14,9 +14,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: ./dqx_dat_dump
-          repository: KodywithaK/dqx_dat_dump
-          # ref: main
-          ref: test
+          # repository: KodywithaK/dqx_dat_dump
+          repository: dqx-translation-project/dqx_dat_dump
+          ref: main
+          # ref: test
 
       # - name: Checkout dqx-offline-localization
       #   uses: actions/checkout@v4
