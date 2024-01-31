@@ -53,7 +53,7 @@ jobs:
           cd ../../
         # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
-      - name: Add downloads & list.txt
+      # - name: Add downloads & list.txt
         # run: |
           # ls -R
         # run: |
@@ -63,11 +63,11 @@ jobs:
         #   echo '1' > 1.txt
         #   echo '2' > 2.txt
         #   cd ..
-        run: |
-          if exist downloads rd /s /q downloads
-          mkdir downloads
-          cd downloads
-          echo '1' > 1.txt
+        # run: |
+        #   if exist downloads rd /s /q downloads
+        #   mkdir downloads
+        #   cd downloads
+        #   echo '1' > 1.txt
 
       - name: Get Current Time
         run: |
@@ -80,6 +80,5 @@ jobs:
           # path: |
           #   downloads
           path: |
-            ./downloads
             ./dqx_dat_dump/tools/packing/new_etp
           retention-days: 1
