@@ -21,14 +21,14 @@ jobs:
           # ref: main
           # ref: test
 
-      # - name: Checkout dqx-offline-localization
-      #   uses: actions/checkout@v4
-      #   with:
-      #     path: ./dqx-offline-localization
-      #     repository: KodywithaK/dqx-offline-localization
-      #     ref: testing
-      #     sparse-checkout: |
-      #       FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
+      - name: Checkout dqx-offline-localization
+        uses: actions/checkout@v4
+        with:
+          path: ./dqx-offline-localization
+          repository: KodywithaK/dqx-offline-localization
+          ref: testing
+          sparse-checkout: |
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
       #     # sparse-checkout-cone-mode: false
       #     # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
       
@@ -64,16 +64,16 @@ jobs:
       #     echo '2' > 2.txt
       #     cd ..
 
-      # - name: Get Current Time
-      #   run: |
-      #     echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
+      - name: Get Current Time
+        run: |
+          echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
 
-      # - name: Upload Artifact GitHub Action
-      #   uses: actions/upload-artifact@main
-      #   with:
-      #     name: assets_${{ env.time }}
-      #     # path: |
-      #     #   downloads
-      #     path: |
-      #       .\dqx_dat_dump\Scripts
-      #     retention-days: 1
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@main
+        with:
+          name: assets_${{ env.time }}
+          # path: |
+          #   downloads
+          path: |
+            ./dqx_dat_dump/tools/packing/new_etp
+          retention-days: 1
