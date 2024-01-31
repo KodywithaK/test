@@ -9,14 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout dqx_dat_dump
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           path: dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           ref: main
 
       - name: Checkout dqx-offline-localization
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           # path: test
           repository: KodywithaK/dqx-offline-localization
