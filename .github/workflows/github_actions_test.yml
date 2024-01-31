@@ -1,14 +1,16 @@
 name: Publish GitHub Actions Artifacts test
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+  # push:
+    # branches: [main]
     # paths:
     #   - 'FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/**'
 
 jobs:
   archive-build-artifacts:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout dqx_dat_dump
         uses: actions/checkout@v4
@@ -17,7 +19,7 @@ jobs:
           # repository: dqx-translation-project/dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           # ref: main
-          ref: test
+          # ref: test
 
       # - name: Checkout dqx-offline-localization
       #   uses: actions/checkout@v4
@@ -63,16 +65,16 @@ jobs:
       #     echo '2' > 2.txt
       #     cd ..
 
-      - name: Get Current Time
-        run: |
-          echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
+      # - name: Get Current Time
+      #   run: |
+      #     echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
 
-      - name: Upload Artifact GitHub Action
-        uses: actions/upload-artifact@main
-        with:
-          name: assets_${{ env.time }}
-          # path: |
-          #   downloads
-          path: |
-            .\dqx_dat_dump\Scripts
-          retention-days: 1
+      # - name: Upload Artifact GitHub Action
+      #   uses: actions/upload-artifact@main
+      #   with:
+      #     name: assets_${{ env.time }}
+      #     # path: |
+      #     #   downloads
+      #     path: |
+      #       .\dqx_dat_dump\Scripts
+      #     retention-days: 1
