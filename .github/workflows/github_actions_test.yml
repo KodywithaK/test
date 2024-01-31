@@ -9,11 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Add downloads folder
-        run: |
-          mkdir downloads
-
-
       - name: Checkout dqx-dat-dump
         uses: actions/checkout@v4
         with:
@@ -31,8 +26,9 @@ jobs:
           # sparse-checkout-cone-mode: false
             # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
-      - name: Add list.txt
+      - name: Add downloads & list.txt
         run: |
+          mkdir downloads
           printf '%s\n' * > downloads/list.txt
           cd downloads
           echo '1' > 1.txt
