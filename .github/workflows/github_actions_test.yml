@@ -9,18 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Add downloads folder and list.txt
+      - name: Add downloads folder
         run: |
           mkdir downloads
-          printf '%s\n' * > downloads/list.txt
-          cd downloads
-          echo '1' > 1.txt
-          echo '2' > 2.txt
-          cd ..
+
 
       - name: Checkout dqx-dat-dump
         uses: actions/checkout@v4
         with:
+          path: dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           
       - name: Checkout dqx-offline-locatization
@@ -34,6 +31,13 @@ jobs:
           # sparse-checkout-cone-mode: false
             # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
+      - name: Add list.txt
+        run: |
+          printf '%s\n' * > downloads/list.txt
+          cd downloads
+          echo '1' > 1.txt
+          echo '2' > 2.txt
+          cd ..
 
       - name: Get Current Time
         run: |
@@ -43,9 +47,6 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: assets_${{ env.time }}
-          # path: |
-          #   downloads
-          #   # test
           path: |
             downloads
           retention-days: 3
