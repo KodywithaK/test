@@ -10,21 +10,21 @@ jobs:
     steps:
 
       - name: Checkout
-        - uses: actions/checkout@v4
-          with:
-            path: dqx_dat_dump
-            repository: KodywithaK/dqx_dat_dump
-            ref: main
-        - uses: actions/checkout@v4
-          with:
-            # path: test
-            repository: KodywithaK/dqx-offline-localization
-            ref: testing
-            sparse-checkout: |
-              FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
-            # sparse-checkout-cone-mode: false
-              # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
-          - run: ls
+      - uses: actions/checkout@v4
+        with:
+          path: dqx_dat_dump
+          repository: KodywithaK/dqx_dat_dump
+          ref: main
+      - uses: actions/checkout@v4
+        with:
+          # path: test
+          repository: KodywithaK/dqx-offline-localization
+          ref: testing
+          sparse-checkout: |
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
+          # sparse-checkout-cone-mode: false
+            # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+      - run: ls
 
       - name: Add downloads & list.txt
         run: |
