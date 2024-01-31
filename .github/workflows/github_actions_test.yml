@@ -23,7 +23,7 @@ jobs:
           repository: KodywithaK/dqx-offline-localization
           ref: testing
           sparse-checkout: |
-            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/*.win32.json
+            FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
           # sparse-checkout-cone-mode: false
             # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
