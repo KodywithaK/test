@@ -41,9 +41,9 @@ jobs:
           cache: 'pip' # caching pip dependencies
       - name: Run Python
         run: |
-          pip install -r requirements.txt
           cd ./dqx_dat_dump
           python -m venv venv
+          pip install -r requirements.txt
           find $PWD
           
         # run: |
