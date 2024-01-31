@@ -35,10 +35,13 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v4
         with:
+          architecture: 'x64'
           # python-version: '3.x'
           python-version: '3.11'
+          cache: 'pip' # caching pip dependencies
       - name: Run Python
         run: |
+          pip install -r requirements.txt
           cd ./dqx_dat_dump
           python -m venv venv
           find $PWD
