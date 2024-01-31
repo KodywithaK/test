@@ -8,25 +8,27 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout dqx_dat_dump
+      - uses: actions/checkout@v4
         with:
           path: dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
           ref: main
-      - run: ls
-      - uses: actions/checkout@v2
+
+      - name: Checkout dqx-offline-localization
+      - uses: actions/checkout@v4
         with:
           # path: test
           repository: KodywithaK/dqx-offline-localization
           ref: testing
           sparse-checkout: |
             FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
-          # sparse-checkout-cone-mode: false
+          sparse-checkout-cone-mode: false
           # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
-      - run: ls
 
       - name: Add downloads & list.txt
         run: |
+          ls
           mkdir downloads
           printf '%s\n' * > downloads/list.txt
           cd downloads
