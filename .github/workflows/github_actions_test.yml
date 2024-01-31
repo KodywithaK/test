@@ -36,9 +36,9 @@ jobs:
       - name: Run Python
         run: |
           cd ./dqx_dat_dump
-          pip install -r requirements.txt
           python -m venv venv
           find $PWD
+          ./venv/Scripts/activate
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
