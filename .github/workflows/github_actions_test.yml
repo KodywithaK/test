@@ -36,7 +36,7 @@ jobs:
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
-          ls -d -1 $PWD/*.*
+          ls -d -1 -R $PWD/*.*
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
