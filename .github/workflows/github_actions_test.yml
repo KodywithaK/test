@@ -36,7 +36,7 @@ jobs:
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
-          ls -l | xargs realpath
+          printf '%s\n' "$PWD"/*
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
