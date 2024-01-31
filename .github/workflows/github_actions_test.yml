@@ -43,26 +43,30 @@ jobs:
         # run: |
         #   find $PWD          
         run: |
-          cd ./dqx_dat_dump
+          cd .\dqx_dat_dump
           python -m venv venv
-          ./venv/Scripts/activate
+          .\venv\Scripts\activate
           pip install -r requirements.txt
-          cd ./tools/packing/
-          python ./pack_etp_GitHubActions.py -a
+          cd .\tools\packing\
+          python .\pack_etp_GitHubActions.py -a
           deactivate
-          cd ../../
+          cd ..\..\
         # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
-      # - name: Add downloads & list.txt
-      #   # run: |
-      #     # ls -R
-      #   run: |
-      #     mkdir downloads
-      #     printf '%s\n' * > downloads/list.txt
-      #     cd downloads
-      #     echo '1' > 1.txt
-      #     echo '2' > 2.txt
-      #     cd ..
+      - name: Add downloads & list.txt
+        # run: |
+          # ls -R
+        # run: |
+        #   mkdir downloads
+        #   printf '%s\n' * > downloads/list.txt
+        #   cd downloads
+        #   echo '1' > 1.txt
+        #   echo '2' > 2.txt
+        #   cd ..
+        run: |
+          mkdir downloads
+          cd downloads
+          echo '1' > 1.txt
 
       - name: Get Current Time
         # run: |
@@ -77,5 +81,6 @@ jobs:
           # path: |
           #   downloads
           path: |
+            ./downloads
             ./dqx_dat_dump/tools/packing/new_etp
           retention-days: 1
