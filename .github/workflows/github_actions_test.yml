@@ -8,8 +8,15 @@ jobs:
   archive-build-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - name: Temp Download Folder
-        run: mkdir downloads
+
+      - name: Add downloads folder and list.txt
+        run: |
+          mkdir downloads
+          printf '%s\n' * > downloads/list.txt
+          cd downloads
+          echo '1' > 1.txt
+          echo '2' > 2.txt
+          cd ..
 
       - name: Checkout dqx-dat-dump
         uses: actions/checkout@v4
@@ -27,13 +34,6 @@ jobs:
           # sparse-checkout-cone-mode: false
             # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
 
-      - name: Add Artifacts To Publish To Temp Folder
-        run: |
-          printf '%s\n' * > ./downloads/list.txt
-        #   cd downloads
-        #   echo '1' > 1.txt
-        #   echo '2' > 2.txt
-        #   cd ..
 
       - name: Get Current Time
         run: |
