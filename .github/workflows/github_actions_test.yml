@@ -36,10 +36,7 @@ jobs:
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
-          cd ./venv
-          ls
-          cd ./Scripts
-          ls
+          ls -R
         # run: |
         #   cd ./dqx_dat_dump
         #   python -m venv venv
