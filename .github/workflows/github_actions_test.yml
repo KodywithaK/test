@@ -28,7 +28,7 @@ jobs:
 
       - name: Add downloads & list.txt
         run: |
-          ls
+          ls -R
           mkdir downloads
           printf '%s\n' * > downloads/list.txt
           cd downloads
