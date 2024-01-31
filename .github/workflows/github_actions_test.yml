@@ -47,7 +47,7 @@ jobs:
           # deactivate
           # cd ../../
         run: |
-          print("hello")
+          python print("hello")
 
       - name: Add downloads & list.txt
         run: |
