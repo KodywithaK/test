@@ -40,21 +40,17 @@ jobs:
           python-version: '3.11'
           cache: 'pip' # caching pip dependencies
       - name: Run Python
+        # run: |
+        #   find $PWD          
         run: |
           cd ./dqx_dat_dump
           python -m venv venv
+          ./venv/Scripts/activate
           pip install -r requirements.txt
-          find $PWD
-          
-        # run: |
-        #   cd ./dqx_dat_dump
-        #   python -m venv venv
-        #   ./venv/Scripts/activate
-        #   pip install -r requirements.txt
-        #   cd ./tools/packing/
-        #   python ./pack_etp_GitHubActions.py -a
-        #   deactivate
-        #   cd ../../
+          cd ./tools/packing/
+          python ./pack_etp_GitHubActions.py -a
+          deactivate
+          cd ../../
         # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
       # - name: Add downloads & list.txt
