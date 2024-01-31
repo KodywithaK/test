@@ -29,7 +29,7 @@ jobs:
 
       - name: Add Artifacts To Publish To Temp Folder
         run: |
-          printf '%s\n' * > downloads/list.txt
+          printf '%s\n' * > ./downloads/list.txt
         #   cd downloads
         #   echo '1' > 1.txt
         #   echo '2' > 2.txt
