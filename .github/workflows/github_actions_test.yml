@@ -1,4 +1,4 @@
-name: Publish GitHub Actions Artifacts test
+name: Publish GitHub Actions Artifacts
 
 on:
   workflow_dispatch:
@@ -29,8 +29,8 @@ jobs:
           ref: testing
           sparse-checkout: |
             FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
-      #     # sparse-checkout-cone-mode: false
-      #     # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+          # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
+          # sparse-checkout-cone-mode: false
       
       - name: Install Python
         uses: actions/setup-python@v4
@@ -39,9 +39,7 @@ jobs:
           # python-version: '3.x'
           python-version: '3.11'
           cache: 'pip' # caching pip dependencies
-      - name: Run Python
-        # run: |
-        #   find $PWD          
+      - name: Run Python         
         run: |
           cd ./dqx_dat_dump/
           python -m venv venv
@@ -50,7 +48,13 @@ jobs:
           cd ./tools/packing/
           python ./pack_etp_GitHubActions.py -a
           deactivate
-          cd ../../
+          cd ~
+          ./UnrealPak/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_PC_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_PC.txt
+          ./UnrealPak/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_Switch_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt
+        # <UnrealPak Filepath>/UnrealPak     <UnrealPak Filepath Reversed>/downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=<UnrealPak Filepath Reversed>/dqx_dat_dump/tools/packing/responsefile.txt
+        # ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile.txt
+          
+          
         # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
       # - name: Add downloads & list.txt
@@ -63,22 +67,27 @@ jobs:
         #   echo '1' > 1.txt
         #   echo '2' > 2.txt
         #   cd ..
-        # run: |
-        #   if exist downloads rd /s /q downloads
-        #   mkdir downloads
-        #   cd downloads
-        #   echo '1' > 1.txt
+      # - name: Add downloads & list.txt
+      #   run: |
+      #     if exist downloads rd /s /q downloads
+      #     mkdir downloads
+      #     cd downloads
+      #     echo '1' > 1.txt
 
       - name: Get Current Time
         run: |
-          echo "time=$(date +'%Y_%m_%d')" >> $GITHUB_ENV
+          echo "time=$(date +'%Y_%m_%d_%H%M')" >> $GITHUB_ENV
 
       - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@v4
         with:
-          name: assets_${{ env.time }}
+          name: GitHubActions_Latest_Dialog_${{ env.time }}
           # path: |
           #   downloads
           path: |
             ./dqx_dat_dump/tools/packing/new_etp
           retention-days: 1
+
+# Error 0x80070781: The name of the file cannot be resolved by the system.
+# System.Threading.Tasks.Dataflow.dll
+# System.Web.WebPages.Deployment.dll
