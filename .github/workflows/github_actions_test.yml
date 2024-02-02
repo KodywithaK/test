@@ -1,11 +1,11 @@
-name: Publish GitHub Actions Artifacts
+name: Publish Latest Dialog _P.pak As GitHub Actions Artifact
 
 on:
   workflow_dispatch:
-  # push:
-    # branches: [main]
-    # paths:
-    #   - 'FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/**'
+  push:
+    branches: [main]
+    paths:
+      - 'FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/**'
 
 jobs:
   archive-build-artifacts:
@@ -16,10 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: ./dqx_dat_dump
-          # repository: dqx-translation-project/dqx_dat_dump
           repository: KodywithaK/dqx_dat_dump
-          # ref: main
-          # ref: test
 
       - name: Checkout dqx-offline-localization
         uses: actions/checkout@v4
@@ -29,8 +26,6 @@ jobs:
           ref: testing
           sparse-checkout: |
             FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/
-          # FINAL/pakchunk0-Switch_P/Holiday/Content/NonAssets/ETP/eventTextCsA11Client.win32.json
-          # sparse-checkout-cone-mode: false
       
       - name: Install Python
         uses: actions/setup-python@v4
@@ -49,29 +44,9 @@ jobs:
           python ./pack_etp_GitHubActions.py -a
           deactivate
           cd ~
-          ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../actions-runner/_work/test/test/downloads/pakchunk0-WindowsNoEditor_Dialog_Latest_PC_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_PC.txt
+          ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../actions-runner/_work/test/test/downloads/pakchunk0-WindowsNoEditor_Dialog_Latest_PC_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_WindowsNoEditor.txt
           ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../actions-runner/_work/test/test/downloads/pakchunk0-Switch_Dialog_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt
-        # <UnrealPak Filepath>/UnrealPak     <UnrealPak Filepath Reversed>/downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=<UnrealPak Filepath Reversed>/dqx_dat_dump/tools/packing/responsefile.txt
-        # ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt          
-          
-        # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
-
-      # - name: Add downloads & list.txt
-        # run: |
-          # ls -R
-        # run: |
-        #   mkdir downloads
-        #   printf '%s\n' * > downloads/list.txt
-        #   cd downloads
-        #   echo '1' > 1.txt
-        #   echo '2' > 2.txt
-        #   cd ..
-      # - name: Add downloads & list.txt
-      #   run: |
-      #     if exist downloads rd /s /q downloads
-      #     mkdir downloads
-      #     cd downloads
-      #     echo '1' > 1.txt
+        # <UnrealPak Filepath>/UnrealPak     <UnrealPak Filepath Reversed>/downloads/pakchunk0-{PLATFORM}_Dialog_Latest_P.pak -Create=<UnrealPak Filepath Reversed>/dqx_dat_dump/tools/packing/responsefile_{PLATFORM}.txt
 
       - name: Get Current Time
         run: |
@@ -80,13 +55,7 @@ jobs:
       - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@v4
         with:
-          name: GitHubActions_Latest_Dialog_${{ env.time }}
-          # path: |
+          name: GitHubActions_Dialog_Latest_${{ env.time }}
           path: |
             downloads
-          # ./dqx_dat_dump/tools/packing/new_etp
-          retention-days: 1
-
-# Error 0x80070781: The name of the file cannot be resolved by the system.
-# System.Threading.Tasks.Dataflow.dll
-# System.Web.WebPages.Deployment.dll
+          # retention-days: 1
