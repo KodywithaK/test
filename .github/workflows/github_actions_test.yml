@@ -49,11 +49,10 @@ jobs:
           python ./pack_etp_GitHubActions.py -a
           deactivate
           cd ~
-          ./UnrealPak/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_PC_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_PC.txt
-          ./UnrealPak/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_Switch_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt
+          ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-WindowsNoEditor_Dialog_Latest_PC_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_PC.txt
+          ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_Dialog_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt
         # <UnrealPak Filepath>/UnrealPak     <UnrealPak Filepath Reversed>/downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=<UnrealPak Filepath Reversed>/dqx_dat_dump/tools/packing/responsefile.txt
-        # ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile.txt
-          
+        # ./UnrealEngine-4.27/Engine/Binaries/Linux/UnrealPak ../../../../downloads/pakchunk0-Switch_GitHubActions_Latest_P.pak -Create=../../../../dqx_dat_dump/tools/packing/responsefile_Switch.txt          
           
         # run: python -c 'import os, sys; print(sys.version); path = "."; dirs = os.listdir(path)'
 
