@@ -82,9 +82,9 @@ jobs:
         with:
           name: GitHubActions_Latest_Dialog_${{ env.time }}
           # path: |
-          #   downloads
           path: |
-            ./dqx_dat_dump/tools/packing/new_etp
+            downloads
+          # ./dqx_dat_dump/tools/packing/new_etp
           retention-days: 1
 
 # Error 0x80070781: The name of the file cannot be resolved by the system.
