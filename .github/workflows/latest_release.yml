@@ -1,9 +1,9 @@
 on: [push, workflow_dispatch]
 
 env: 
-  Error: "\033[0;31m"
-  Success: "\033[0;32m"
-  Warning: "\033[0;33m"
+  Error: "\033[0;31mError: "
+  Success: "\033[0;32mSuccess: "
+  Warning: "\033[0;33mWarning: "
 
 jobs:
   create_release:
@@ -17,9 +17,9 @@ jobs:
           # echo -e "\033[0;31m"
           # echo -e "\033[0;32m"
           # echo -e "\033[0;33m"
-          echo -e "$Error  Error"
-          echo -e "$Success  Success"
-          echo -e "$Warning  Warning"
+          echo -e "${Error}  Error"
+          echo -e "${Success}  Success"
+          echo -e "${Warning}  Warning"
 
       - name: Create Release
         run: |
