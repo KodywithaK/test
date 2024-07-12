@@ -41,7 +41,7 @@ jobs:
           echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
-          # gh release delete latest -yeet
+          gh release delete latest -y
           gh release create latest ./downloads/GitHubActions_Dialog_Latest_*/* -p --generate-notes
           # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/* --clobber
           # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/*
