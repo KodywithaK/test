@@ -1,10 +1,5 @@
 on: [push, workflow_dispatch]
 
-env: 
-  Error: "\033[0;31mError: "
-  Success: "\033[0;32mSuccess: "
-  Warning: "\033[0;33mWarning: "
-
 jobs:
   create_release:
     permissions: write-all
@@ -17,11 +12,9 @@ jobs:
           # echo -e "\033[0;31m"
           # echo -e "\033[0;32m"
           # echo -e "\033[0;33m"
-          echo -e "$Error  Error"
-          echo -e "${Error}  Error"
-          echo -e "${{ env.Error }}  Error"
-          echo -e "${Success}  Success"
-          echo -e "${Warning}  Warning"
+          echo -e \033[0;31m"Error"
+          echo -e \033[0;32m"Success"
+          echo -e \033[0;33m"Warning"
 
       - name: Create Release
         run: |
