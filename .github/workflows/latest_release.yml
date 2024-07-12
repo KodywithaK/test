@@ -1,14 +1,19 @@
 on: [push, workflow_dispatch]
 
 jobs:
-    create_release:
-        permissions: write-all
-        runs-on: self-hosted
-        steps:
-            - uses: actions/checkout@main
-            - name: Create Release
-              run: |
-                  echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
-                  echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
-                  echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
-                  gh release upload latestTest README.md --clobber
+  create_release:
+    permissions: write-all
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@main
+      - name: Create Release
+        run: |
+          if [ git tag -l "latest" ]; then
+            echo -e "\033[0;32mlatest exists"
+          else
+            echo -e "\033[0;31mlatest does not exists"
+          fi
+          echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
+          echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
+          echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
+          gh release upload latestTest README.md --clobber
