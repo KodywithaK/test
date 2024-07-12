@@ -18,7 +18,7 @@ jobs:
 
       - run: |
           mkdir -p ./downloads
-          
+          echo hello > ./downloads/world.txt
 
       - name: Get Current Time
         run: |
