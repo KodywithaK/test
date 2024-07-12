@@ -12,9 +12,9 @@ jobs:
           # echo -e "\033[0;31m"
           # echo -e "\033[0;32m"
           # echo -e "\033[0;33m"
-          echo -e \033[0;31m"Error"
-          echo -e \033[0;32m"Success"
-          echo -e \033[0;33m"Warning"
+          echo -e "\033[0;31m Error"
+          echo -e "\033[0;32m Success"
+          echo -e "\033[0;33m Warning"
 
       - name: Create Release
         run: |
