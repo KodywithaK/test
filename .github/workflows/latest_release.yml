@@ -16,4 +16,4 @@ jobs:
           echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
-          gh release upload latestTest README.md --clobber
+          # gh release upload latestTest README.md --clobber
