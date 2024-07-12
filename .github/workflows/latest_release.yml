@@ -30,14 +30,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: ./downloads
-      - run: echo -e "\0033[0;32m ls -R ./downloads"
+      - run: ls -R ./downloads
 
       - name: Create Release
         run: |
-          echo -e "\033[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
-          echo -e "\033[0;33msteps.echo.conclusion = ${{ steps.echo.conclusion }}"
-          echo -e "\033[0;33msteps.echo.outcome = ${{ steps.echo.outcome }}"
           echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
-          # gh release upload latestTest README.md --clobber
+          gh release upload latest ./downloads/* --clobber
