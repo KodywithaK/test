@@ -18,7 +18,7 @@ jobs:
 
       - run: |
           mkdir -p ./downloads
-          echo hellohellohello > ./downloads/world.txt
+          echo hello > ./downloads/world.txt
 
       - name: Get Current Time
         run: |
@@ -42,6 +42,6 @@ jobs:
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
           # gh release delete latest -y
-          gh release create latest ./downloads/GitHubActions_Dialog_Latest_*/* --generate-notes
+          gh release create latest ./downloads/GitHubActions_Dialog_Latest_*/* -p --generate-notes
           # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/* --clobber
           # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/*
