@@ -26,6 +26,12 @@ jobs:
           name: my-artifact
           path: ./downloads/world.txt
 
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: ./downloads
+      - run: echo -e "\0033[0;32m ls -R ./downloads"
+
       - name: Create Release
         run: |
           echo -e "\033[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
