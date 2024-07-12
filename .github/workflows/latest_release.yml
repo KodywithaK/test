@@ -1,0 +1,13 @@
+on:
+  [push,workflow_dispatch]
+
+jobs:
+  create_release:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@main
+    - name: Create Release
+      run: |
+        echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
+        echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
+        gh release create ${GITHUB_REF#refs/*/} -t ${GITHUB_REF#refs/*/} -p --generate-notes
