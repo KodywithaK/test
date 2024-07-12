@@ -12,9 +12,6 @@ jobs:
           echo -e "\033[0;31mRed"
           echo -e "\033[0;32mGreen"
           echo -e "\033[0;33mYellow"
-          echo -e "\034[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
-          echo -e "\034[0;33msteps.echo.conclusion = ${{ steps.echo.conclusion }}"
-          echo -e "\034[0;33msteps.echo.outcome = ${{ steps.echo.outcome }}"
           - name: Create Release
           run: |
           echo -e "\034[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
