@@ -1,5 +1,10 @@
 on: [push, workflow_dispatch]
 
+env: 
+  Error: "\033[0;31m"
+  Success: "\033[0;32m"
+  Warning: "\033[0;33m"
+
 jobs:
   create_release:
     permissions: write-all
@@ -9,31 +14,18 @@ jobs:
       - name: echo
         id: echo
         run: |
-          echo -e "\033[0;31mRed"
-          echo -e "\033[0;32mGreen"
-          echo -e "\033[0;33mYellow"
-          echo -e "\033[0;34mtest"
-          echo -e "\033[0;35mtest"
-          echo -e "\033[0;36mtest"
-          echo -e "\033[0;37mtest"
-          echo -e "\033[0;38mtest"
-          echo -e "\033[0;39mtest"
-          echo -e "\033[0;40mtest"
-          echo -e "\033[0;41mtest"
-          echo -e "\033[0;42mtest"
-          echo -e "\033[0;43mtest"
-          echo -e "\033[0;44mtest"
-          echo -e "\033[0;45mtest"
-          echo -e "\033[0;46mtest"
-          echo -e "\033[0;47mtest"
-          echo -e "\033[0;48mtest"
-          echo -e "\033[0;49mtest"
-          echo -e "\033[0;50mtest"
+          # echo -e "\033[0;31m"
+          # echo -e "\033[0;32m"
+          # echo -e "\033[0;33m"
+          echo -e "${Error}Error"
+          echo -e "${Success}Success"
+          echo -e "${Warning}Warning"
+
       - name: Create Release
         run: |
-          echo -e "\034[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
-          echo -e "\034[0;33msteps.echo.conclusion = ${{ steps.echo.conclusion }}"
-          echo -e "\034[0;33msteps.echo.outcome = ${{ steps.echo.outcome }}"
+          echo -e "\033[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
+          echo -e "\033[0;33msteps.echo.conclusion = ${{ steps.echo.conclusion }}"
+          echo -e "\033[0;33msteps.echo.outcome = ${{ steps.echo.outcome }}"
           echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
