@@ -12,8 +12,25 @@ jobs:
           echo -e "\033[0;31mRed"
           echo -e "\033[0;32mGreen"
           echo -e "\033[0;33mYellow"
-          - name: Create Release
-          run: |
+          echo -e "\033[0;34mtest"
+          echo -e "\033[0;35mtest"
+          echo -e "\033[0;36mtest"
+          echo -e "\033[0;37mtest"
+          echo -e "\033[0;38mtest"
+          echo -e "\033[0;39mtest"
+          echo -e "\033[0;40mtest"
+          echo -e "\033[0;41mtest"
+          echo -e "\033[0;42mtest"
+          echo -e "\033[0;43mtest"
+          echo -e "\033[0;44mtest"
+          echo -e "\033[0;45mtest"
+          echo -e "\033[0;46mtest"
+          echo -e "\033[0;47mtest"
+          echo -e "\033[0;48mtest"
+          echo -e "\033[0;49mtest"
+          echo -e "\033[0;50mtest"
+      - name: Create Release
+        run: |
           echo -e "\034[0;33msteps.echo.outputs = ${{ steps.echo.outputs }}"
           echo -e "\034[0;33msteps.echo.conclusion = ${{ steps.echo.conclusion }}"
           echo -e "\034[0;33msteps.echo.outcome = ${{ steps.echo.outcome }}"
