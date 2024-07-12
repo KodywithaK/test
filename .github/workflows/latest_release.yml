@@ -18,19 +18,22 @@ jobs:
 
       - run: |
           mkdir -p ./downloads
-          echo hello > ./downloads/world.txt
+
+      - name: Get Current Time
+        run: |
+          echo "time=$(date +'%Y_%m_%d_%H%M')" >> $GITHUB_ENV
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
-          path: ./downloads/world.txt
+          name: GitHubActions_Dialog_Latest_${{ env.time }}
+          path: ./downloads/*
 
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           path: ./downloads
-      - run: ls -R ./downloads
+      - run: ls -R ./downloads/GitHubActions_Dialog_Latest_*
 
       - name: Create Release
         run: |
