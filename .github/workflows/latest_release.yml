@@ -17,14 +17,14 @@ jobs:
           echo -e "\033[0;33m Warning"
 
       - run: |
-          mkdir -p path/to/artifact
-          echo hello > path/to/artifact/world.txt
+          mkdir -p ./downloads
+          echo hello > ./downloads/world.txt
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: path/to/artifact/world.txt
+          path: ./downloads/world.txt
 
       - name: Create Release
         run: |
