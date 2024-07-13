@@ -19,29 +19,26 @@ jobs:
     runs-on: self-hosted
     steps:
 
-      - uses: actions/checkout@main
-      - name: echo
-        id: echo
-        run: |
-          echo -e "\033[0;31m Error"
-          echo -e "\033[0;32m Success"
-          echo -e "\033[0;33m Warning"
+      # - uses: actions/checkout@main
+      # - name: echo
+      #   id: echo
+      #   run: |
+      #     echo -e "\033[0;31m Error"
+      #     echo -e "\033[0;32m Success"
+      #     echo -e "\033[0;33m Warning"
 
-          echo -e "github.workspace = \033[0;32m ${{ github.workspace }}"
-          echo -e "runner.workspace = \033[0;32m ${{ runner.workspace }}"
-
-      - name: Checkout UnrealPak
-        uses: actions/checkout@v4
-        with:
-          path: ./UnrealPak
-          repository: KodywithaK/UnrealPak
-          sparse-checkout: Linux
+      # - name: Checkout UnrealPak
+      #   uses: actions/checkout@v4
+      #   with:
+      #     path: ./UnrealPak
+      #     repository: KodywithaK/UnrealPak
+      #     sparse-checkout: Linux
 
       - run: |
           mkdir -p ./downloads
           echo hello > ./downloads/world.txt
-          chmod +x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
-          ${{ github.workspace }}/UnrealPak/Linux/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak
+          # chmod +x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
+          ~/UnrealEngine-4.27.2-release/Engine/Binaries/Linux/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak -Create=${{ github.workspace }}/responseFile.txt
 
       - name: Get Current Time
         run: |
@@ -53,17 +50,14 @@ jobs:
           name: GitHubActions_Dialog_Latest_${{ env.time }}
           path: ./downloads/*
 
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          path: ./downloads
-      - run: |
-          ls ./downloads/GitHubActions_Dialog_Latest_*
+      # - name: Download Artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     path: ./downloads
+      # - run: |
+      #     ls ./downloads/GitHubActions_Dialog_Latest_*
 
       - name: Create Release
         run: |
-          echo -e "GITHUB_REF =\n\t\033[0;32m${GITHUB_REF}"
-          echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
-          echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
           gh release delete latest -y
           gh release create latest ./downloads/* -p --generate-notes

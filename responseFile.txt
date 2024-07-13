@@ -1,0 +1,1 @@
+"${{ github.workspace }}/downloads/*" "../../../Game/Content/Game/Localization"
