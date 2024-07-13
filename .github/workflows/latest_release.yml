@@ -1,27 +1,24 @@
 on: [push, workflow_dispatch]
 
 jobs:
-  archive-build-artifacts:
+  UnrealPak_-Create:
     permissions: write-all
     runs-on: self-hosted
     steps:
-
       - name: UnrealPak -Create
         run: |
-          mkdir -p ./downloads
-          echo hello > ./downloads/world.txt
+          # mkdir -p ./downloads
+          # echo hello > ./downloads/world.txt
           # chmod +x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
           ~/UnrealEngine-4.27.2-release/Engine/Binaries/Linux/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak -Create=${{ github.workspace }}/responseFile.txt
 
       - name: Get Current Time
         run: echo "time=$(date +'%Y_%m_%d_%H%M')" >> $GITHUB_ENV
 
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: GitHubActions_Dialog_Latest_${{ env.time }}
-      #     path: ./downloads/*
-
+  Create_Latest_Release:
+    needs: UnrealPak_-Create
+    runs-on: self-hosted
+    steps:
       - name: Create Release
         run: |
           gh release delete latest -y
