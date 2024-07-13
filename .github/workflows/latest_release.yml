@@ -1,7 +1,23 @@
 on: [push, workflow_dispatch]
 
 jobs:
+  archive-build-artifacts:
+    permissions: write-all
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@main
+      - name: echo
+        id: echo
+        run: |
+          # echo -e "\033[0;31m"
+          # echo -e "\033[0;32m"
+          # echo -e "\033[0;33m"
+          echo -e "\033[0;31m Error"
+          echo -e "\033[0;32m Success"
+          echo -e "\033[0;33m Warning"
+
   create_release:
+    needs: archive-build-artifacts
     permissions: write-all
     runs-on: self-hosted
     steps:
@@ -34,7 +50,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: ./downloads
-      - run: ls -R ./downloads/GitHubActions_Dialog_Latest_*
+      - run: |
+          ls ./downloads/GitHubActions_Dialog_Latest_*
 
       - name: Create Release
         run: |
@@ -43,6 +60,3 @@ jobs:
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
           gh release delete latest -y
           gh release create latest ./downloads/GitHubActions_Dialog_Latest_*/* -p --generate-notes
-
-          # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/* --clobber
-          # gh release upload latest ./downloads/GitHubActions_Dialog_Latest_*/*
