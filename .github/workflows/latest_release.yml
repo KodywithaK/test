@@ -5,57 +5,22 @@ jobs:
     permissions: write-all
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@main
-      - name: echo
-        id: echo
+
+      - name: UnrealPak -Create
         run: |
-          echo -e "\033[0;31m Error"
-          echo -e "\033[0;32m Success"
-          echo -e "\033[0;33m Warning"
-
-  create_release:
-    needs: archive-build-artifacts
-    permissions: write-all
-    runs-on: self-hosted
-    steps:
-
-      # - uses: actions/checkout@main
-      # - name: echo
-      #   id: echo
-      #   run: |
-      #     echo -e "\033[0;31m Error"
-      #     echo -e "\033[0;32m Success"
-      #     echo -e "\033[0;33m Warning"
-
-      # - name: Checkout UnrealPak
-      #   uses: actions/checkout@v4
-      #   with:
-      #     path: ./UnrealPak
-      #     repository: KodywithaK/UnrealPak
-      #     sparse-checkout: Linux
-
-      - run: |
           mkdir -p ./downloads
           echo hello > ./downloads/world.txt
           # chmod +x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
           ~/UnrealEngine-4.27.2-release/Engine/Binaries/Linux/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak -Create=${{ github.workspace }}/responseFile.txt
 
       - name: Get Current Time
-        run: |
-          echo "time=$(date +'%Y_%m_%d_%H%M')" >> $GITHUB_ENV
+        run: echo "time=$(date +'%Y_%m_%d_%H%M')" >> $GITHUB_ENV
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: GitHubActions_Dialog_Latest_${{ env.time }}
-          path: ./downloads/*
-
-      # - name: Download Artifact
-      #   uses: actions/download-artifact@v4
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v4
       #   with:
-      #     path: ./downloads
-      # - run: |
-      #     ls ./downloads/GitHubActions_Dialog_Latest_*
+      #     name: GitHubActions_Dialog_Latest_${{ env.time }}
+      #     path: ./downloads/*
 
       - name: Create Release
         run: |
