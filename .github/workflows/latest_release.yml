@@ -19,13 +19,6 @@ jobs:
     runs-on: self-hosted
     steps:
 
-      - name: Checkout UnrealPak
-        uses: actions/checkout@v4
-        with:
-          path: ./UnrealPak
-          repository: KodywithaK/UnrealPak
-          sparse-checkout: Linux
-
       - uses: actions/checkout@main
       - name: echo
         id: echo
@@ -37,10 +30,17 @@ jobs:
           echo -e "github.workspace = \033[0;32m ${{ github.workspace }}"
           echo -e "runner.workspace = \033[0;32m ${{ runner.workspace }}"
 
+      - name: Checkout UnrealPak
+        uses: actions/checkout@v4
+        with:
+          path: ./UnrealPak
+          repository: KodywithaK/UnrealPak
+          sparse-checkout: Linux
+
       - run: |
           mkdir -p ./downloads
           echo hello > ./downloads/world.txt
-          ${{ github.workspace }}/UnrealPak/UnrealPak ${{ github.workspace }}/downloadstest/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak
+          ${{ github.workspace }}/UnrealPak/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak
 
       - name: Get Current Time
         run: |
