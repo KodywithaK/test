@@ -40,7 +40,7 @@ jobs:
       - run: |
           mkdir -p ./downloads
           echo hello > ./downloads/world.txt
-          git update-index --chmod=+x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
+          chmod +x ${{ github.workspace }}/UnrealPak/Linux/UnrealPak
           ${{ github.workspace }}/UnrealPak/Linux/UnrealPak ${{ github.workspace }}/downloads/pakchunk0-WindowsNoEditor_English_Dialogue_Latest_P.pak
 
       - name: Get Current Time
@@ -66,4 +66,4 @@ jobs:
           echo -e "GITHUB_REF#refs/*/ =\n\t\033[0;32m${GITHUB_REF#refs/*/}"
           echo -e "GITHUB_REF_NAME =\n\t\033[0;32m${GITHUB_REF_NAME}"
           gh release delete latest -y
-          gh release create latest ./downloads/GitHubActions_Dialog_Latest_*/* -p --generate-notes
+          gh release create latest ./downloads/* -p --generate-notes
