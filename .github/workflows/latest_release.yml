@@ -9,9 +9,6 @@ jobs:
       - name: echo
         id: echo
         run: |
-          # echo -e "\033[0;31m"
-          # echo -e "\033[0;32m"
-          # echo -e "\033[0;33m"
           echo -e "\033[0;31m Error"
           echo -e "\033[0;32m Success"
           echo -e "\033[0;33m Warning"
@@ -25,12 +22,12 @@ jobs:
       - name: echo
         id: echo
         run: |
-          # echo -e "\033[0;31m"
-          # echo -e "\033[0;32m"
-          # echo -e "\033[0;33m"
           echo -e "\033[0;31m Error"
           echo -e "\033[0;32m Success"
           echo -e "\033[0;33m Warning"
+
+          echo -e "github.workspace = \033[0;32m ${{ github.workspace }}"
+          echo -e "runner.workspace = \033[0;32m ${{ runner.workspace }}"
 
       - run: |
           mkdir -p ./downloads
