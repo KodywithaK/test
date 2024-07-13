@@ -1,1 +1,1 @@
-"${{ github.workspace }}/downloads/*" "../../../Game/Content/Game/Localization"
+"../../../../actions-runner/_work/test/test/downloads/*" "../../../Game/Content/Game/Localization"
